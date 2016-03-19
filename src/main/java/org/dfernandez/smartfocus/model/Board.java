@@ -8,7 +8,7 @@ public class Board {
     public static final int COLS = 3;
     // number of empty spaces
     private int blankSpaces;
-
+    // Winning Mark
     private Mark winningMark;
 
     // game Board
@@ -48,6 +48,7 @@ public class Board {
        return this.blankSpaces;
     }
 
+    // Get Winner
     public Mark getWinningMark() {
         return winningMark;
     }
@@ -69,31 +70,37 @@ public class Board {
      * @param position  (1..ROWS*COLS)
      * @param mark
      */
-    public void addMark(int position, Mark mark) {
+    public boolean addMark(int position, Mark mark) {
         if(position <= ROWS*COLS) {
             if(gameBoard[(position-1)/ROWS][(position-1)%COLS].getContent() == Mark.BLANK) {
                 gameBoard[(position-1)/ROWS][(position-1)%COLS].setContent(mark);
                 blankSpaces--;
+                return true;
             }
         }
+        return false;
     }
 
+    /**
+     * Delete a Mark for a specific position (set to BLANK)
+     * @param position
+     */
     public void removeMark(int position) {
         if(position <= ROWS*COLS) {
             gameBoard[(position-1)/ROWS][(position-1)%COLS].setContent(Mark.BLANK);
             blankSpaces++;
         }
     }
-    /** Return true if it is a draw (i.e., no more EMPTY cell) */
-    public boolean isDraw() {
+    /** Return true if there are no more EMPTY cell */
+    public boolean isFull() {
         for (int row = 0; row < ROWS; ++row) {
             for (int col = 0; col < COLS; ++col) {
                 if (gameBoard[row][col].getContent() == Mark.BLANK) {
-                    return false; // an empty seed found, not a draw, exit
+                    return false; // an empty seed found, exit
                 }
             }
         }
-        return true; // no empty cell, it's a draw
+        return true; // no empty cell
     }
 
     /**
@@ -147,6 +154,7 @@ public class Board {
         return false;
 
     }
+
 
     public void paint() {
         for(int row = 0; row < ROWS; row++) {
