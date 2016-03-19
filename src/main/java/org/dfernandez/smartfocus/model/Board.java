@@ -140,7 +140,7 @@ public class Board {
         if(gameBoard[0][0].getContent() == mark &&gameBoard[1][1].getContent() == mark && gameBoard[2][2].getContent() == mark ) {
             return true;
         }
-        if(gameBoard[0][2].getContent() == mark &&gameBoard[1][1].getContent() == mark && gameBoard[2][1].getContent() == mark ) {
+        if(gameBoard[0][2].getContent() == mark &&gameBoard[1][1].getContent() == mark && gameBoard[2][0].getContent() == mark ) {
             return true;
         }
 

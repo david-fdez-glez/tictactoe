@@ -54,4 +54,26 @@ public class BoardTest {
         assertTrue(gameBoard.checkWinningSolution());
 
     }
+
+    @Test
+    public void boardCrossWinning() {
+        gameBoard.addMark(3,Mark.CROSS);
+        gameBoard.addMark(5,Mark.CROSS);
+        gameBoard.addMark(7,Mark.CROSS);
+        assertTrue(gameBoard.checkWinningSolution());
+
+        assertEquals(Mark.CROSS, gameBoard.getWinningMark());
+    }
+
+    @Test
+    public void boardNOUGHTWinning() {
+        gameBoard.addMark(4,Mark.NOUGHT);
+        gameBoard.addMark(5,Mark.NOUGHT);
+        gameBoard.addMark(6,Mark.NOUGHT);
+        assertTrue(gameBoard.checkWinningSolution());
+
+        assertEquals(Mark.NOUGHT, gameBoard.getWinningMark());
+
+
+    }
 }
