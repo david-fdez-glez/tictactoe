@@ -1,1 +1,3 @@
-# tictactoe
+SmartFocus
+
+TicTacToe Computer Vs Human
