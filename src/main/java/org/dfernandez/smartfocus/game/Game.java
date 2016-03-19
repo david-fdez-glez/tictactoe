@@ -2,23 +2,26 @@ package org.dfernandez.smartfocus.game;
 
 import org.dfernandez.smartfocus.model.Board;
 import org.dfernandez.smartfocus.model.Mark;
+import org.dfernandez.smartfocus.service.Computer;
+import org.dfernandez.smartfocus.service.ComputerImpl;
 
 
 public class Game {
 
     private Board gameBoard;
 
-    // flag to check first player to move
-    private boolean computerFirst;
+
+    private Computer computer;
 
     // Flag to check if the Game is Ove
     private boolean gameOver;
 
-    // Var Winner
+    // Winner
     private Mark winner;
 
     public Game() {
         gameBoard = new Board();
+        computer = new ComputerImpl(gameBoard);
         gameOver = false;
         winner = Mark.BLANK;
 
@@ -54,11 +57,22 @@ public class Game {
      * @param position
      */
     public boolean playerAddMark(int position) {
-           if(gameBoard.addMark(position, Mark.NOUGHT)) {
-               if(gameOver()) {
-                    return true;
-               }
-           }
+        if(gameBoard.addMark(position, Mark.NOUGHT)) {
+            if(gameOver()) {
+                return true;
+             }
+        }
+        return false;
+    }
+
+
+    public boolean computerAddMark() {
+        int bestPosition = computer.getMarkNextPosition();
+        if(gameBoard.addMark(bestPosition, Mark.CROSS)) {
+            if(gameOver()) {
+                return true;
+            }
+        }
         return false;
     }
 
@@ -67,7 +81,7 @@ public class Game {
         if(gameBoard.checkWinningSolution())   {
             this.winner = gameBoard.getWinningMark();
             this.gameOver = true;
-            System.out.println(" Game ended. Player " + this.winner + " won.");
+            System.out.println(" Game ended. " + convertWinner(this.winner) + " won.");
         } else if(gameBoard.isFull()) {
             this.gameOver = true;
             System.out.println(" Game ended Draw")  ;
@@ -79,5 +93,17 @@ public class Game {
 
     public Mark getWinner() {
            return gameBoard.getWinningMark();
+    }
+
+
+    private String convertWinner(Mark mark) {
+        switch (mark) {
+            case CROSS:
+                return "Computer";
+            case NOUGHT:
+                return "You";
+            default:
+                return "No one";
+        }
     }
 }

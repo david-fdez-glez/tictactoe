@@ -38,6 +38,7 @@ public class App
 
 
         while (in.hasNextInt()) {
+            game.resetGame();
             gameOver = false;
             flagPosition = false;
             computerTurn = false;
@@ -70,7 +71,10 @@ public class App
                 System.out.println(" Next turn: " + nextPlayer + " computerTurn " + computerTurn);
 
                 if(computerTurn) {
-
+                    if(game.computerAddMark()) {
+                        gameOver = true;
+                    }
+                    nextPlayer = "You";
                     computerTurn = false;
                  } else {
                     do{
@@ -88,18 +92,18 @@ public class App
 
                         }
                     }while(!flagPosition && !game.isPositionFree(position));
-
+                    nextPlayer = "Computer";
                     computerTurn = true;
                     if(game.playerAddMark(position)) {
                         gameOver = true;
-
                     }
                 }
 
                 game.getGameBoard().paint();
                 turn++;
           } while(!gameOver );
-                System.out.println("1111Who will start playing? (Any character will exit)");
+                System.out.println("\n\n");
+                System.out.println("Who will start playing? (Any character will exit)");
                 System.out.println("1) Computer (X)");
                 System.out.println("2) You (O)");
 

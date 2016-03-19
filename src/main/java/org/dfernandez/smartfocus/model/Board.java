@@ -71,7 +71,7 @@ public class Board {
      * @param mark
      */
     public boolean addMark(int position, Mark mark) {
-        if(position <= ROWS*COLS) {
+        if((position >0) && (position <= ROWS*COLS)) {
             if(gameBoard[(position-1)/ROWS][(position-1)%COLS].getContent() == Mark.BLANK) {
                 gameBoard[(position-1)/ROWS][(position-1)%COLS].setContent(mark);
                 blankSpaces--;

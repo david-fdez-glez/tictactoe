@@ -1,16 +1,25 @@
 package org.dfernandez.smartfocus.service;
 
-/**
- * Created with IntelliJ IDEA.
- * User: david
- * Date: 19/03/16
- * Time: 19:53
- * To change this template use File | Settings | File Templates.
- */
+import org.dfernandez.smartfocus.model.Board;
+import org.dfernandez.smartfocus.model.Mark;
+
+
 public class ComputerImpl implements Computer {
 
+    private Board gameBoard;
+
+    public ComputerImpl(Board board) {
+        gameBoard = board;
+    }
     @Override
     public int getMarkNextPosition() {
-        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+
+        // First just find the first empty place
+        for (int i = 1; i <= Board.ROWS*Board.COLS; ++i) {
+                if(gameBoard.getMarkAtPosition(i) == Mark.BLANK)
+                    return i;
+
+        }
+        return 0;
     }
 }
