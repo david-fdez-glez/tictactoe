@@ -4,10 +4,7 @@ import org.dfernandez.smartfocus.game.Game;
 
 import java.util.Scanner;
 
-/**
- * Hello world!
- *
- */
+
 public class App 
 {
 
@@ -67,7 +64,6 @@ public class App
             do {
 
 
-                //game.getGameBoard().paint();
                 System.out.println(" Next turn: " + nextPlayer + " computerTurn " + computerTurn);
 
                 if(computerTurn) {

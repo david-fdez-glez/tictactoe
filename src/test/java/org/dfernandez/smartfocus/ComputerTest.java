@@ -3,7 +3,7 @@ package org.dfernandez.smartfocus;
 import org.dfernandez.smartfocus.game.Game;
 import org.dfernandez.smartfocus.model.Mark;
 import org.dfernandez.smartfocus.service.Computer;
-import org.dfernandez.smartfocus.service.ComputerImpl;
+import org.dfernandez.smartfocus.service.ComputerDummyImpl;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,7 +18,7 @@ public class ComputerTest {
     @Before
     public void setUp() {
         game = new Game();
-        computer = new ComputerImpl(game.getGameBoard());
+        computer = new ComputerDummyImpl(game.getGameBoard());
     }
 
     @Test
@@ -29,7 +29,7 @@ public class ComputerTest {
     }
 
     @Test
-    public void computerWinGame(){
+    public void computerDummyWinGame(){
         game.computerAddMark();
         game.computerAddMark();
         game.computerAddMark();

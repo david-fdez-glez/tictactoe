@@ -4,11 +4,11 @@ import org.dfernandez.smartfocus.model.Board;
 import org.dfernandez.smartfocus.model.Mark;
 
 
-public class ComputerImpl implements Computer {
+public class ComputerDummyImpl implements Computer {
 
     private Board gameBoard;
 
-    public ComputerImpl(Board board) {
+    public ComputerDummyImpl(Board board) {
         gameBoard = board;
     }
     @Override

@@ -62,7 +62,7 @@ public class BoardTest {
         gameBoard.addMark(7,Mark.CROSS);
         assertTrue(gameBoard.checkWinningSolution());
 
-        assertEquals(Mark.CROSS, gameBoard.getWinningMark());
+        assertEquals(Mark.CROSS, gameBoard.getWinnerMark());
     }
 
     @Test
@@ -72,7 +72,7 @@ public class BoardTest {
         gameBoard.addMark(6,Mark.NOUGHT);
         assertTrue(gameBoard.checkWinningSolution());
 
-        assertEquals(Mark.NOUGHT, gameBoard.getWinningMark());
+        assertEquals(Mark.NOUGHT, gameBoard.getWinnerMark());
 
 
     }

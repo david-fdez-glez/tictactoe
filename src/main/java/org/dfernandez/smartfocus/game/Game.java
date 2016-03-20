@@ -3,7 +3,7 @@ package org.dfernandez.smartfocus.game;
 import org.dfernandez.smartfocus.model.Board;
 import org.dfernandez.smartfocus.model.Mark;
 import org.dfernandez.smartfocus.service.Computer;
-import org.dfernandez.smartfocus.service.ComputerImpl;
+import org.dfernandez.smartfocus.service.ComputerDummyImpl;
 
 
 public class Game {
@@ -21,7 +21,7 @@ public class Game {
 
     public Game() {
         gameBoard = new Board();
-        computer = new ComputerImpl(gameBoard);
+        computer = new ComputerDummyImpl(gameBoard);
         gameOver = false;
         winner = Mark.BLANK;
 
@@ -79,7 +79,7 @@ public class Game {
     public boolean gameOver() {
 
         if(gameBoard.checkWinningSolution())   {
-            this.winner = gameBoard.getWinningMark();
+            this.winner = gameBoard.getWinnerMark();
             this.gameOver = true;
             System.out.println(" Game ended. " + convertWinner(this.winner) + " won.");
         } else if(gameBoard.isFull()) {
@@ -92,7 +92,7 @@ public class Game {
     }
 
     public Mark getWinner() {
-           return gameBoard.getWinningMark();
+           return gameBoard.getWinnerMark();
     }
 
 

@@ -8,8 +8,8 @@ public class Board {
     public static final int COLS = 3;
     // number of empty spaces
     private int blankSpaces;
-    // Winning Mark
-    private Mark winningMark;
+    // Winner Mark
+    private Mark winnerMark;
 
     // game Board
     private Cell[][] gameBoard;
@@ -24,7 +24,7 @@ public class Board {
         }
 
         blankSpaces = ROWS*COLS;
-        winningMark = Mark.BLANK;
+        winnerMark = Mark.BLANK;
     }
 
     /**
@@ -37,7 +37,7 @@ public class Board {
             }
         }
         blankSpaces = ROWS*COLS;
-        winningMark = Mark.BLANK;
+        winnerMark = Mark.BLANK;
     }
 
     /**
@@ -49,8 +49,8 @@ public class Board {
     }
 
     // Get Winner
-    public Mark getWinningMark() {
-        return winningMark;
+    public Mark getWinnerMark() {
+        return winnerMark;
     }
 
     /**
@@ -111,11 +111,11 @@ public class Board {
 
         // Check First Mark.NOUGHT
        if(hasWinningSolution(Mark.NOUGHT))  {
-           winningMark = Mark.NOUGHT;
+           winnerMark = Mark.NOUGHT;
            return true;
        }
         if(hasWinningSolution(Mark.CROSS)) {
-            winningMark = Mark.CROSS;
+            winnerMark = Mark.CROSS;
             return true;
         }
 
@@ -165,5 +165,19 @@ public class Board {
             System.out.println();
             if(row < ROWS -1) System.out.println("---------------------");
         }
+    }
+
+
+    /**
+     * Function MinMax Algorithm
+     */
+    public int[] getAvailableSpaces() {
+        int spaces[] = new int[blankSpaces];
+        int index = 0;
+        for(int i = 1; i <= ROWS*COLS; i++) {
+             if(getMarkAtPosition(i) == Mark.BLANK)
+                spaces[index++] = i;
+        }
+        return spaces;
     }
 }
