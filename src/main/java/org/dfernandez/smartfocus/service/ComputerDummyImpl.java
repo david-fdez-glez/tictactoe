@@ -16,8 +16,8 @@ public class ComputerImpl implements Computer {
 
         // First just find the first empty place
         for (int i = 1; i <= Board.ROWS*Board.COLS; ++i) {
-                if(gameBoard.getMarkAtPosition(i) == Mark.BLANK)
-                    return i;
+            if(gameBoard.getMarkAtPosition(i) == Mark.BLANK)
+                return i;
 
         }
         return 0;
