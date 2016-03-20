@@ -16,7 +16,7 @@ public class GameTest {
 
     @Before
     public void setUp() {
-        game = new Game();
+        game = new Game(1);
         boardSize = 9;
     }
 
@@ -27,7 +27,7 @@ public class GameTest {
 
     @Test
     public void newGameNoOver() {
-        assertFalse(game.gameOver());
+        assertFalse(game.isGameOver());
     }
 
     @Test
@@ -59,7 +59,7 @@ public class GameTest {
         game.playerAddMark(1);
         game.playerAddMark(5);
         game.playerAddMark(9);
-        assertTrue(game.gameOver());
+        assertTrue(game.isGameOver());
         assertEquals(Mark.NOUGHT, game.getWinner());
 
     }

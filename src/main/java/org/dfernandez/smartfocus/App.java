@@ -1,7 +1,10 @@
 package org.dfernandez.smartfocus;
 
+import com.sun.org.apache.bcel.internal.classfile.ConstantString;
 import org.dfernandez.smartfocus.game.Game;
-
+import org.dfernandez.smartfocus.service.Computer;
+import org.dfernandez.smartfocus.service.ComputerMiniMaxImpl;
+import org.dfernandez.smartfocus.util.Constants;
 import java.util.Scanner;
 
 
@@ -16,8 +19,10 @@ public class App
 
         // Flag to check if the Game is Over
         boolean gameOver;
+        // 1 = Dummy, 2 = MiniMax Computer
+        Game game = new Game(Constants.MINIMAX_COMPUTER);
+        Computer computerMiniMax = new ComputerMiniMaxImpl();
 
-        Game game = new Game();
         System.out.println( "Welcome to Tic Tac Toe Challenge!" );
 
         System.out.println("Who will start playing? (Any character will exit)");
@@ -64,7 +69,7 @@ public class App
             do {
 
 
-                System.out.println(" Next turn: " + nextPlayer + " computerTurn " + computerTurn);
+                System.out.println("\n\nNext turn: " + nextPlayer);
 
                 if(computerTurn) {
                     if(game.computerAddMark()) {
@@ -74,7 +79,7 @@ public class App
                     computerTurn = false;
                  } else {
                     do{
-                        System.out.print("Introduce position (1..9) ");
+                        System.out.print("Introduce position (1..9)\n");
                         position = in.nextInt();
 
                         if((position >=1) && (position <= 9))  {

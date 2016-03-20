@@ -11,10 +11,12 @@ public class ComputerDummyImpl implements Computer {
     public ComputerDummyImpl(Board board) {
         gameBoard = board;
     }
+
+
     @Override
     public int getMarkNextPosition() {
 
-        // First just find the first empty place
+        // Just find the first empty place
         for (int i = 1; i <= Board.ROWS*Board.COLS; ++i) {
             if(gameBoard.getMarkAtPosition(i) == Mark.BLANK)
                 return i;

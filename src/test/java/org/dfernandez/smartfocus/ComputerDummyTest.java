@@ -2,23 +2,20 @@ package org.dfernandez.smartfocus;
 
 import org.dfernandez.smartfocus.game.Game;
 import org.dfernandez.smartfocus.model.Mark;
-import org.dfernandez.smartfocus.service.Computer;
-import org.dfernandez.smartfocus.service.ComputerDummyImpl;
+import org.dfernandez.smartfocus.util.Constants;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class ComputerTest {
+public class ComputerDummyTest {
 
     private Game game;
-    private Computer computer;
 
     @Before
     public void setUp() {
-        game = new Game();
-        computer = new ComputerDummyImpl(game.getGameBoard());
+        game = new Game(Constants.DUMMY_COMPUTER);
     }
 
     @Test
@@ -29,11 +26,25 @@ public class ComputerTest {
     }
 
     @Test
-    public void computerDummyWinGame(){
+    public void computerDummyWinGame() {
+        game.resetGame();
         game.computerAddMark();
         game.computerAddMark();
         game.computerAddMark();
-        assertTrue(game.gameOver());
+        assertTrue(game.isGameOver());
         assertEquals(Mark.CROSS, game.getWinner());
+    }
+
+    @Test
+    public void computerDummyLoseGame() {
+        game.resetGame();
+        game.computerAddMark();
+        game.playerAddMark(7);
+        game.computerAddMark();
+        game.playerAddMark(8);
+        game.computerAddMark();
+        game.playerAddMark(9);
+        assertTrue(game.isGameOver());
+        assertEquals(Mark.NOUGHT, game.getWinner());
     }
 }
