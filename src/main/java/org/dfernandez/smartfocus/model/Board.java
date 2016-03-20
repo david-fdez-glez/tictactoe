@@ -59,7 +59,7 @@ public class Board {
      * @return   Mark of null if position it's out of range
      */
     public Mark getMarkAtPosition(int position) {
-        if(position <= ROWS*COLS) {
+        if(position >0 && position <= ROWS*COLS) {
             return gameBoard[(position-1)/3][(position-1)%3].getContent();
         }
         return null;
@@ -163,7 +163,7 @@ public class Board {
                 if(col < COLS -1) System.out.print(" | ");
             }
             System.out.println();
-            if(row < ROWS -1) System.out.println("---------------------");
+            if(row < ROWS -1) System.out.println("----------------------");
         }
     }
 

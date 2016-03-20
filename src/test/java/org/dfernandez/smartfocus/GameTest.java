@@ -32,6 +32,7 @@ public class GameTest {
 
     @Test
     public void newGameFreeSpaces() {
+        game.resetGame();
         for(int i=1;i<=9; i++) {
             assertTrue(game.isPositionFree(i));
         }
@@ -61,6 +62,5 @@ public class GameTest {
         game.playerAddMark(9);
         assertTrue(game.isGameOver());
         assertEquals(Mark.NOUGHT, game.getWinner());
-
     }
 }

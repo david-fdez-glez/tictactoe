@@ -6,6 +6,12 @@ import org.dfernandez.smartfocus.util.Constants;
 
 public class ComputerFactory {
 
+    /**
+     * Get Computer type, based on Integer
+     * @param type
+     * @param board
+     * @return
+     */
     public static Computer getComputer(int type, Board board) {
 
         switch (type) {

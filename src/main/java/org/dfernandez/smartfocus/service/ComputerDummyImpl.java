@@ -12,7 +12,10 @@ public class ComputerDummyImpl implements Computer {
         gameBoard = board;
     }
 
-
+    /**
+     * Dummy Algorithm
+     * @return
+     */
     @Override
     public int getMarkNextPosition() {
 

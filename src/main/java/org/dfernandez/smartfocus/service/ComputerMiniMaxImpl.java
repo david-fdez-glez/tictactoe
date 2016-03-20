@@ -9,9 +9,7 @@ public class ComputerMiniMaxImpl implements Computer {
 
     private Board gameBoard;
 
-    public ComputerMiniMaxImpl() {
 
-    }
     public ComputerMiniMaxImpl(Board board) {
         gameBoard = board;
     }
@@ -23,7 +21,7 @@ public class ComputerMiniMaxImpl implements Computer {
         int bestIndex = 0;
 
         if ( gameBoard.checkWinningSolution() )
-            score = ((gameBoard.getWinnerMark() == Mark.CROSS) ? 1 : -1);
+            score = ((gameBoard.getWinnerMark() == Mark.CROSS) ? 10 : -10);
         else if ( availableSpaces.length != 0 ) {
             for ( int availableIndex = 0; availableIndex < availableSpaces.length && score != 1; availableIndex++ ) {
                 int nextScore = getChildBoardScore( availableSpaces[availableIndex] );

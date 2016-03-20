@@ -24,7 +24,6 @@ public class ComputerMiniMaxTest {
         game.computerAddMark();
         assertEquals(8, game.getGameBoard().getFreeSpaces());
         game.resetGame();
-
     }
 
     @Test

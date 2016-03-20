@@ -20,17 +20,14 @@ public class BoardTest {
     @Test
     public void getFreeSpaces() {
         assertEquals(9, gameBoard.getFreeSpaces());
-
         gameBoard.addMark(1, Mark.CROSS);
-        assertEquals(8, gameBoard.getFreeSpaces()) ;
-
+        assertEquals(8, gameBoard.getFreeSpaces());
     }
 
     @Test
     public void boardAddMark() {
         gameBoard.addMark(9, Mark.NOUGHT);
-        assertEquals(8, gameBoard.getFreeSpaces()) ;
-
+        assertEquals(8, gameBoard.getFreeSpaces());
     }
 
     @Test
@@ -48,11 +45,9 @@ public class BoardTest {
     public void boardCheckWinningSolution() {
         gameBoard.addMark(1,Mark.CROSS);
         gameBoard.addMark(2,Mark.CROSS);
-
         assertFalse(gameBoard.checkWinningSolution());
         gameBoard.addMark(3,Mark.CROSS);
         assertTrue(gameBoard.checkWinningSolution());
-
     }
 
     @Test
@@ -61,7 +56,6 @@ public class BoardTest {
         gameBoard.addMark(5,Mark.CROSS);
         gameBoard.addMark(7,Mark.CROSS);
         assertTrue(gameBoard.checkWinningSolution());
-
         assertEquals(Mark.CROSS, gameBoard.getWinnerMark());
     }
 
@@ -71,9 +65,6 @@ public class BoardTest {
         gameBoard.addMark(5,Mark.NOUGHT);
         gameBoard.addMark(6,Mark.NOUGHT);
         assertTrue(gameBoard.checkWinningSolution());
-
         assertEquals(Mark.NOUGHT, gameBoard.getWinnerMark());
-
-
     }
 }

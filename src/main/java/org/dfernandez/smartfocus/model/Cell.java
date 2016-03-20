@@ -9,6 +9,9 @@ public class Cell {
         clear();
     }
 
+    /**
+     * Set Cell to BLANK
+     */
     public void clear() {
         this.content = Mark.BLANK;
     }
@@ -18,7 +21,6 @@ public class Cell {
     }
 
     public Mark getContent() {
-
         return content;
     }
 

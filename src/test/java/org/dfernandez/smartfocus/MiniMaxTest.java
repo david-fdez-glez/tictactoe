@@ -27,9 +27,7 @@ public class MiniMaxTest {
         board.addMark(4, Mark.CROSS);
         board.addMark(8, Mark.NOUGHT);
         board.addMark(7, Mark.CROSS);
-
         assertEquals(10, MiniMax.minimax(board, Mark.CROSS));
-
     }
 
     @Test
@@ -43,9 +41,7 @@ public class MiniMaxTest {
         board.addMark(8, Mark.CROSS);
         board.addMark(9, Mark.NOUGHT);
         board.addMark(3, Mark.CROSS);
-
         assertEquals(0, MiniMax.minimax(board, Mark.CROSS));
-
     }
 
 
@@ -55,7 +51,6 @@ public class MiniMaxTest {
         board.addMark(5, Mark.CROSS);
         board.addMark(3, Mark.NOUGHT);
         board.addMark(1, Mark.CROSS);
-
         assertEquals(-10, MiniMax.minimax(board, Mark.NOUGHT));
     }
 

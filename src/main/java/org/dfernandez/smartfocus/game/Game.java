@@ -27,8 +27,6 @@ public class Game {
 
     }
 
-
-
     public Board getGameBoard() {
         return gameBoard;
     }
@@ -72,6 +70,10 @@ public class Game {
     }
 
 
+    /**
+     * Computer add Mark
+     * @return
+     */
     public boolean computerAddMark() {
         int bestPosition = computer.getMarkNextPosition();
         if(gameBoard.addMark(bestPosition, Mark.CROSS)) {
@@ -82,17 +84,20 @@ public class Game {
         return false;
     }
 
+    /**
+     * Check if the game is finish
+     * @return
+     */
     private boolean gameOver() {
 
         if(gameBoard.checkWinningSolution())   {
             this.winner = gameBoard.getWinnerMark();
             this.gameOver = true;
-            System.out.println("Game ended. " + convertWinner(this.winner) + " won.");
+            System.out.println("\n\nGame ended. " + convertWinner(this.winner) + " won.");
         } else if(gameBoard.isFull()) {
             this.gameOver = true;
             this.winner = Mark.BLANK;
-            System.out.println("Game ended Draw")  ;
-
+            System.out.println("\n\nGame ended Draw")  ;
         }
 
         return this.gameOver;
@@ -102,7 +107,11 @@ public class Game {
            return  this.winner;
     }
 
-
+    /**
+     * For Simplicity, Computer will be always CROSS
+     * @param mark
+     * @return
+     */
     private String convertWinner(Mark mark) {
         switch (mark) {
             case CROSS:

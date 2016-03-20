@@ -1,9 +1,6 @@
 package org.dfernandez.smartfocus;
 
-import com.sun.org.apache.bcel.internal.classfile.ConstantString;
 import org.dfernandez.smartfocus.game.Game;
-import org.dfernandez.smartfocus.service.Computer;
-import org.dfernandez.smartfocus.service.ComputerMiniMaxImpl;
 import org.dfernandez.smartfocus.util.Constants;
 import java.util.Scanner;
 
@@ -15,16 +12,21 @@ public class App
     {
         // flag to check if it is computer turn
         boolean computerTurn;
-        String nextPlayer;
+        String nextPlayer; // next player name
 
         // Flag to check if the Game is Over
         boolean gameOver;
         // 1 = Dummy, 2 = MiniMax Computer
         Game game = new Game(Constants.MINIMAX_COMPUTER);
-        Computer computerMiniMax = new ComputerMiniMaxImpl();
 
-        System.out.println( "Welcome to Tic Tac Toe Challenge!" );
-
+        System.out.println("    Welcome to Tic Tac Toe Challenge!" );
+        System.out.println("\n This is the Board\n");
+        System.out.println("   1   |   2   |   3  ");
+        System.out.println("-----------------------");
+        System.out.println("   4   |   5   |   6  ");
+        System.out.println("-----------------------");
+        System.out.println("   7   |   8   |   9  ");
+        System.out.println("-----------------------\n");
         System.out.println("Who will start playing? (Any character will exit)");
         System.out.println("1) Computer (X) " );
         System.out.println("2) You (O)");
@@ -33,7 +35,7 @@ public class App
         int entry;
         // Character enter by the Human Player
         int position;
-        // Flag to check if the position is in range
+        // Flag to check if the position is inside board range
         boolean flagPosition = false;
         // Turn number
         int turn = 0;
@@ -46,7 +48,6 @@ public class App
             computerTurn = false;
             nextPlayer = "";
             turn = 0;
-
 
             entry = in.nextInt();
 
@@ -68,9 +69,8 @@ public class App
 
             do {
 
-
                 System.out.println("\n\nNext turn: " + nextPlayer);
-
+                flagPosition = false;
                 if(computerTurn) {
                     if(game.computerAddMark()) {
                         gameOver = true;
@@ -79,7 +79,11 @@ public class App
                     computerTurn = false;
                  } else {
                     do{
-                        System.out.print("Introduce position (1..9)\n");
+                        System.out.print("Introduce position (1..9). Must be a digit\n");
+                        position = 0;
+                        while(!in.hasNextInt()) {
+                            String aux = in.nextLine();
+                        }
                         position = in.nextInt();
 
                         if((position >=1) && (position <= 9))  {
@@ -88,18 +92,18 @@ public class App
                             System.out.println("Invalid Position. Type a number between [1..9]");
                         }
 
-                        if(!game.isPositionFree(position)) {
+                        if(!game.isPositionFree(position) && flagPosition) {
                             System.out.println("Position is not empty. Try another one");
 
                         }
-                    }while(!flagPosition && !game.isPositionFree(position));
+                    }while(!flagPosition || !game.isPositionFree(position));
                     nextPlayer = "Computer";
                     computerTurn = true;
                     if(game.playerAddMark(position)) {
                         gameOver = true;
                     }
                 }
-
+                System.out.println("\n");
                 game.getGameBoard().paint();
                 turn++;
           } while(!gameOver );
@@ -107,7 +111,6 @@ public class App
                 System.out.println("Who will start playing? (Any character will exit)");
                 System.out.println("1) Computer (X)");
                 System.out.println("2) You (O)");
-
         }
     }
 }
