@@ -41,11 +41,7 @@ public class ComputerMiniMaxTest {
 
     @Test
     public void computerMiniDrawGame() {
-        System.out.println("puto empate " + game.getWinner());
-
         game.resetGame();
-        System.out.println("puto empate " + game.getWinner());
-
         game.computerAddMark();
         game.playerAddMark(5);
         game.computerAddMark();
@@ -56,7 +52,6 @@ public class ComputerMiniMaxTest {
         game.playerAddMark(8);
         game.computerAddMark();
         assertTrue(game.isGameOver());
-        //assertEquals(Mark.BLANK, game.getWinner());
-        System.out.println("puto empate " + game.getWinner());
+        assertEquals(Mark.BLANK, game.getWinner());
     }
 }

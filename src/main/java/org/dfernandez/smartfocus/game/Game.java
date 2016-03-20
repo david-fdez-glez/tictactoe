@@ -91,7 +91,7 @@ public class Game {
         } else if(gameBoard.isFull()) {
             this.gameOver = true;
             this.winner = Mark.BLANK;
-            System.out.println(" Game ended Draw")  ;
+            System.out.println("Game ended Draw")  ;
 
         }
 
